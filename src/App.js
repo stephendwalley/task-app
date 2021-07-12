@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uniqid from "uniqid";
 import { List } from "./components/Overview"
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
 
     this.state = {
       tasks: [],
-      input: '',
+      input: { text: "", id: uniqid() },
     }
 
     this.submitBtn = this.submitBtn.bind(this);
@@ -16,12 +17,19 @@ class App extends Component {
   submitBtn = (event) => {
     event.preventDefault();
     this.setState({ tasks: [...this.state.tasks, this.state.input] })
+    //reset task with new uniqid
+    this.setState({
+      input: {
+        text: "",
+        id: uniqid()
+      }
+    })
     console.log(this.state.input);
 
   }
 
   inputChangeHandler = (event) => {
-    this.setState({ input: event.target.value });
+    this.setState({ input: { text: event.target.value, id: this.state.input.id } });
   }
 
   render() {
@@ -32,7 +40,7 @@ class App extends Component {
           <input type="text" onChange={this.inputChangeHandler} />
           <button onClick={this.submitBtn}>Submit</button>
           <List tasks={this.state.tasks} />
-          
+
         </form>
       </div >
     );
