@@ -3,9 +3,10 @@ import React, { Component } from "react";
 
 class List extends Component {
     render() {
+        const { tasks } = this.props;
         return (
             <div>
-                {this.props.tasks.map((task, index) => {
+                {tasks.map((task) => {
                     return <li key={task.id}>{task.text}</li>;
                 })}
             </div>

@@ -33,14 +33,14 @@ class App extends Component {
   }
 
   render() {
+    const { tasks } = this.state;
     return (
       <div>
         <form>
           <label htmlFor="taskInput">Enter Tasks</label>
           <input type="text" onChange={this.inputChangeHandler} />
           <button onClick={this.submitBtn}>Submit</button>
-          <List tasks={this.state.tasks} />
-
+          <List tasks={tasks} />
         </form>
       </div >
     );
