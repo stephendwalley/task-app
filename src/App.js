@@ -10,22 +10,28 @@ class App extends Component {
     super(props);
 
     this.state = {
-      tasks: ["tester1", "tester2", "tester3", "tester4"],
+      tasks: [],
+      input: '',
     }
 
-    this.onClickBtn = this.onClickBtn.bind(this);
+    this.submitBtn = this.submitBtn.bind(this);
   }
 
-  onClickBtn() {
-    console.log("button has been clicked")
-    this.setState({ tasks: [...this.state.tasks, "yes"] })
+  submitBtn = () => {
+    this.setState({ tasks: [...this.state.tasks, this.state.input] })
+    console.log(this.state.input);
 
+  }
+
+  inputChangeHandler = (event) => {
+    this.setState({ input: event.target.value });
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.onClickBtn}>Submit</button>
+        <input type="text" onChange={this.inputChangeHandler} />
+        <button onClick={this.submitBtn}>Submit</button>
         {this.state.tasks.map((task, index) => (
           <List key={index} task={task} />
         ))}
