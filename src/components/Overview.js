@@ -4,10 +4,6 @@ import React, { Component } from "react";
 // use map to map over tasks array (provide unique key to each item, and print as list element)
 
 class List extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
