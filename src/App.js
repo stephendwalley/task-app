@@ -18,6 +18,7 @@ class App extends Component {
 
   onClickBtn() {
     console.log("button has been clicked")
+    this.setState({ tasks: [...this.state.tasks, "yes"] })
 
   }
 
