@@ -6,9 +6,11 @@ class List extends Component {
         const { tasks } = this.props;
         return (
             <div>
-                {tasks.map((task) => {
-                    return <li key={task.id}>{task.text}</li>;
-                })}
+                <ul>
+                    {tasks.map((task, index) => {
+                        return <li key={task.id}>{index + 1}. {task.text}</li>;
+                    })}
+                </ul>
             </div>
         );
     }
